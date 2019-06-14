@@ -4,13 +4,12 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{B23654A0-1960-4F81-8447-63768C442C97}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Test</RootNamespace>
     <AssemblyName>Test</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <SccProjectName>
     </SccProjectName>
     <SccLocalPath>
@@ -41,6 +40,7 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <StartupObject>Test.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -70,6 +70,8 @@
     <PlatformTarget>x86</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <WarningLevel>4</WarningLevel>
+    <Optimize>false</Optimize>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="FirebirdSql.Data.FirebirdClient">
@@ -78,7 +80,6 @@
     <Reference Include="IBM.Data.DB2">
       <HintPath>..\Assemblies\IBM.Data.DB2.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Mono.Security">
       <HintPath>..\Assemblies\Mono.Security.dll</HintPath>
     </Reference>
@@ -90,9 +91,7 @@
     </Reference>
     <Reference Include="Oracle.DataAccess, Version=2.111.6.20, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86" />
     <Reference Include="System" />
-    <Reference Include="System.Core">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
+    <Reference Include="System.Core" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.OracleClient" />
     <Reference Include="System.Data.Services" />
@@ -105,9 +104,10 @@
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.XML" />
-    <Reference Include="System.Xml.Linq">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework">
+      <HintPath>..\Assemblies\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -160,6 +160,7 @@
     <Compile Include="Test.cs" />
     <Compile Include="DataService.cs" />
     <Compile Include="XmlMappingSourceTest.cs" />
+    <Compile Include="TestRunner.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -194,39 +195,39 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ALinq.Access\ALinq.Access.csproj">
-      <Project>{4f75b64b-272f-4980-bf0d-f9c4547eee01}</Project>
+      <Project>{4F75B64B-272F-4980-BF0D-F9C4547EEE01}</Project>
       <Name>ALinq.Access</Name>
     </ProjectReference>
     <ProjectReference Include="..\ALinq.DB2\ALinq.DB2.csproj">
-      <Project>{56454bbb-3936-4934-bd15-b817cf780f68}</Project>
+      <Project>{56454BBB-3936-4934-BD15-B817CF780F68}</Project>
       <Name>ALinq.DB2</Name>
     </ProjectReference>
     <ProjectReference Include="..\ALinq.EffiProz\ALinq.EffiProz.csproj">
-      <Project>{b9b25dc9-9ccd-45ff-b5d6-ad7a04efe0cc}</Project>
+      <Project>{B9B25DC9-9CCD-45FF-B5D6-AD7A04EFE0CC}</Project>
       <Name>ALinq.EffiProz</Name>
     </ProjectReference>
     <ProjectReference Include="..\ALinq.Firebird\ALinq.Firebird.csproj">
-      <Project>{ba4accd2-56d1-4929-ae72-ed2e41aa4511}</Project>
+      <Project>{BA4ACCD2-56D1-4929-AE72-ED2E41AA4511}</Project>
       <Name>ALinq.Firebird</Name>
     </ProjectReference>
     <ProjectReference Include="..\ALinq.MySQL\ALinq.MySQL.csproj">
-      <Project>{19ca27cc-d798-43fc-9bf5-dfae28287a37}</Project>
+      <Project>{19CA27CC-D798-43FC-9BF5-DFAE28287A37}</Project>
       <Name>ALinq.MySQL</Name>
     </ProjectReference>
     <ProjectReference Include="..\ALinq.OdpOracle\ALinq.OdpOracle.csproj">
-      <Project>{0921ca6d-32f3-46b2-92c2-9d46794a035f}</Project>
+      <Project>{0921CA6D-32F3-46B2-92C2-9D46794A035F}</Project>
       <Name>ALinq.OdpOracle</Name>
     </ProjectReference>
     <ProjectReference Include="..\ALinq.Orcale\ALinq.Oracle.csproj">
-      <Project>{12f17b3c-0ee9-48c2-9d22-b42dbef2f16d}</Project>
+      <Project>{12F17B3C-0EE9-48C2-9D22-B42DBEF2F16D}</Project>
       <Name>ALinq.Oracle</Name>
     </ProjectReference>
     <ProjectReference Include="..\ALinq.PostgreSQL\ALinq.PostgreSQL.csproj">
-      <Project>{0729766c-7d6d-46ff-9dc7-bd5356296bdb}</Project>
+      <Project>{0729766C-7D6D-46FF-9DC7-BD5356296BDB}</Project>
       <Name>ALinq.PostgreSQL</Name>
     </ProjectReference>
     <ProjectReference Include="..\ALinq.SqlLite\ALinq.SQLite.csproj">
-      <Project>{fc4950ee-b6ce-421c-acd1-14414aed0e77}</Project>
+      <Project>{FC4950EE-B6CE-421C-ACD1-14414AED0E77}</Project>
       <Name>ALinq.SQLite</Name>
     </ProjectReference>
     <ProjectReference Include="..\Northwind\Northwind.csproj">

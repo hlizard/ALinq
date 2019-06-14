@@ -4,6 +4,8 @@ using ALinq;
 using System.Linq;
 using System.Text;
 using NorthwindDemo;
+using drvrapp;
+using System.Reflection;
 
 namespace Test
 {
@@ -11,7 +13,7 @@ namespace Test
     {
         static void Main()
         {
-
+			TestRunner.TestDll ("Test.dll");
         }
     }
 }
