@@ -29,7 +29,7 @@ namespace NorthwindDemo
 
         public static DbConnection CreateConnection(string fileName)
         {
-			var builder = new ALinq.Access.OleDbConnectionStringBuilder
+			var builder = new OleDbConnectionStringBuilder
                               {
                                   DataSource = fileName,
                                   Provider = "Microsoft.Jet.OLEDB.4.0"
